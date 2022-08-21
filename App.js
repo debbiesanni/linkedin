@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { Color } from "./color";
+import TabNav from "./components/bottomTab";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 export default function App() {
+  const Drawer = createDrawerNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen
+          name="TabNav"
+          options={{ headerShown: false }}
+          component={TabNav}
+        />
+      </Drawer.Navigator>
+      <StatusBar style="auto" backgroundColor={Color.bg} />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
